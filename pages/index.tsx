@@ -29,7 +29,7 @@ export const Home = (): JSX.Element => {
         {error.message}
       </p>
     )
-  if (!data) return <p>Loading</p>
+  if (!data) return <p>No data</p>
 
   return (
     <>
