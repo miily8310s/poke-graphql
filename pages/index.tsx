@@ -35,16 +35,16 @@ export const Home = (): JSX.Element => {
     <>
       <div className="container">
         <Head>
-          <title>Create Next App</title>
+          <title>First Three Pokemons!!</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
           <h1 className="title">
-            Welcome to <a href="https://nextjs.org">Next.js!</a>
+            Welcome to{' '}
+            <a href="https://github.com/miily8310s/poke-graphql">
+              First Three Pokemons!!
+            </a>
           </h1>
-          <p className="description">
-            Get started by editing <code>pages/index.tsx</code>
-          </p>
           <div className="grid">
             {data.pokemons.map((pokemon: Pokemon, index: number) => (
               <div key={index} className="card">
@@ -136,23 +136,8 @@ export const Home = (): JSX.Element => {
             font-size: 4rem;
           }
 
-          .title,
-          .description {
+          .title {
             text-align: center;
-          }
-
-          .description {
-            line-height: 1.5;
-            font-size: 1.5rem;
-          }
-
-          code {
-            background: #fafafa;
-            border-radius: 5px;
-            padding: 0.75rem;
-            font-size: 1.1rem;
-            font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-              DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
           }
 
           @media (max-width: 600px) {
