@@ -8,16 +8,17 @@ interface Pokemon {
   image: string
 }
 
-export const Home = (): JSX.Element => {
-  const GetPokemonQuery = gql`
-    query {
-      pokemons(first: 9) {
-        number
-        name
-        image
-      }
+export const GetPokemonQuery = gql`
+  query {
+    pokemons(first: 9) {
+      number
+      name
+      image
     }
-  `
+  }
+`
+
+export const Home = (): JSX.Element => {
   const { loading, error, data } = useQuery(GetPokemonQuery)
 
   if (loading) return <p>Loading</p>
