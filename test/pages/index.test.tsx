@@ -54,11 +54,30 @@ describe('Home page', () => {
       const h1 = component.root.findByType('h1')
       expect(h1.children.join('')).toContain('Welcome to')
 
-      // const p = component.root.findByType('p')
       const p = component.root.findAllByType('p')
       expect(p[0].children.join('')).toContain('001 Bulbasaur')
       expect(p[1].children.join('')).toContain('002 Ivysaur')
       expect(p[2].children.join('')).toContain('003 Venusaur')
+    })
+  })
+
+  it('should show error', async () => {
+    const pokemonMock = {
+      request: {
+        query: GetPokemonQuery,
+      },
+      error: new Error('An error occurred'),
+    }
+
+    const component = TestRenderer.create(
+      <MockedProvider mocks={[pokemonMock]} addTypename={false}>
+        <Home />
+      </MockedProvider>
+    )
+
+    await waitFor(() => {
+      const tree = component.toJSON()
+      expect(tree.children).toContain('An error occurred')
     })
   })
   // TODO：snapshotは別の機会に書く
