@@ -30,14 +30,14 @@ describe('Home page', () => {
               image: 'https://img.pokemondb.net/artwork/bulbasaur.jpg',
             },
             {
-              number: '001',
-              name: 'Bulbasaur',
-              image: 'https://img.pokemondb.net/artwork/bulbasaur.jpg',
+              number: '002',
+              name: 'Ivysaur',
+              image: 'https://img.pokemondb.net/artwork/ivysaur.jpg',
             },
             {
-              number: '001',
-              name: 'Bulbasaur',
-              image: 'https://img.pokemondb.net/artwork/bulbasaur.jpg',
+              number: '003',
+              name: 'Venusaur',
+              image: 'https://img.pokemondb.net/artwork/venusaur.jpg',
             },
           ],
         },
@@ -52,28 +52,23 @@ describe('Home page', () => {
 
     await waitFor(() => {
       const h1 = component.root.findByType('h1')
-      const p = component.root.findByType('p')
       expect(h1.children.join('')).toContain('Welcome to')
-      expect(p.children.join('')).toContain('001 Bulbasaur')
+
+      // const p = component.root.findByType('p')
+      const p = component.root.findAllByType('p')
+      expect(p[0].children.join('')).toContain('001 Bulbasaur')
+      expect(p[1].children.join('')).toContain('002 Ivysaur')
+      expect(p[2].children.join('')).toContain('003 Venusaur')
     })
   })
+  // TODO：snapshotは別の機会に書く
+  // it('matches snapshot', () => {
+  //   const { asFragment } = render(
+  //     <ApolloProvider client={apolloClient}>
+  //       <Home />
+  //     </ApolloProvider>,
+  //     {}
+  //   )
+  //   expect(asFragment()).toMatchSnapshot()
+  // })
 })
-// it('matches snapshot', () => {
-//   const { asFragment } = render(
-//     <ApolloProvider client={apolloClient}>
-//       <Home />
-//     </ApolloProvider>,
-//     {}
-//   )
-//   expect(asFragment()).toMatchSnapshot()
-// })
-
-// it('should render loading state initially', () => {
-//   const { asFragment } = render(
-//     <ApolloProvider client={apolloClient}>
-//       <Home />
-//     </ApolloProvider>,
-//     {}
-//   )
-//   expect(asFragment().children[0].textContent).toContain('Loading')
-// })
